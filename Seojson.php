@@ -1,8 +1,10 @@
 <?php
 
-namespace infrajs\controller\ext;
+namespace infrajs\layer\seojson;
+use infrajs\load\Load;
+use infrajs\view\View;
 
-class seojson
+class Seojson
 {
 	public function check(&$layer)
 	{
@@ -78,7 +80,7 @@ class seojson
 			$item = array();
 		}
 
-		if ($item['external']) {
+		if (!empty($item['external'])) {
 			if (!is_array($item['external'])) {
 				$item['external'] = explode(', ', $item['external']);
 			}
@@ -130,7 +132,7 @@ class seojson
 	}
 	public function meta(&$html, $item, $type, $name, $val = null)
 	{
-		if (is_null($val)) {
+		if (is_null($val)&&isset($item[$name])) {
 			$val = $item[$name];
 		}
 		if (empty($val)) {
