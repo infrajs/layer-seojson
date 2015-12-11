@@ -8,6 +8,6 @@ use infrajs\event\Event;
 Path::req('*controller/infra.php');
 Event::handler('layer.onshow', function (&$layer) {
 	//seojson
-	if (Layer::pop('onlyclient')) return;
+	if (Layer::pop($layer,'onlyclient')) return;
 	Seojson::check($layer);
 }, 'seojson:tpl');
