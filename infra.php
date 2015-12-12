@@ -4,8 +4,10 @@ use infrajs\path\Path;
 use infrajs\controller\Layer;
 use infrajs\layer\tpl\Tpl;
 use infrajs\event\Event;
+use infrajs\infra\Infra;
 
-Path::req('*controller/infra.php');
+Infra::req('controller');
+
 Event::handler('layer.onshow', function (&$layer) {
 	//seojson
 	if (Layer::pop($layer,'onlyclient')) return;

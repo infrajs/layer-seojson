@@ -9,7 +9,7 @@ class Seojson
 	public function check(&$layer)
 	{
 		if (!empty($layer['seojsontpl'])) {
-			$layer['seojson'] = infra_template_parse(array($layer['seojsontpl']), $layer);
+			$layer['seojson'] = Template::parse(array($layer['seojsontpl']), $layer);
 		}
 		if (empty($layer['seojson'])) {
 			return;
