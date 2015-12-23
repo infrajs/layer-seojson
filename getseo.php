@@ -1,8 +1,9 @@
 <?php
 
-	use infrajs\controller\ext\seojson;
+use infrajs\ans\Ans;
+use infrajs\layer\seojson\Seojson;
 
 $src = $_SERVER['QUERY_STRING'];
-	$seo = seojson::load($src);
+$seo = Seojson::load($src);
 
-return infra_ans($seo);
+return Ans::ans($seo);
