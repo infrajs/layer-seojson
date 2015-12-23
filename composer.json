@@ -3,5 +3,11 @@
 	"license": "GPL3",
 	"autoload": {
 		"psr-4": { "infrajs\\layer\\seojson\\": "/" }
+	},
+	"require":{
+		"infrajs/load":"~1",
+		"infrajs/path":"~1",
+		"infrajs/view":"~1",
+		"infrajs/template":"~1"
 	}
 }
