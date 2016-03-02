@@ -1,5 +1,6 @@
 {
 	"name": "infrajs/layer-seojson",
+	"homepage":"https://github.com/infrajs/layer-seojson",
 	"license": "GPL3",
 	"autoload": {
 		"psr-4": { "infrajs\\layer\\seojson\\": "/" }
