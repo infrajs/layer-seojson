@@ -27,14 +27,14 @@ class Seojson
 			self::meta($html, $item, 'link', 'image_src');
 			self::meta($html, $item, 'property', 'og:image', $item['image_src']);
 			self::meta($html, $item, 'name', 'twitter:image', $item['image_src']);
-			self::meta($html, $item, 'itemprop', 'image', $item['image_src']);
+			//self::meta($html, $item, 'itemprop', 'image', $item['image_src']);
 		}
 
 		if (!empty($item['canonical'])) {
 			self::meta($html, $item, 'link', 'canonical');
 			self::meta($html, $item, 'name', 'twitter:site', $item['canonical']);
 			self::meta($html, $item, 'property', 'og:url', $item['canonical']);
-			self::meta($html, $item, 'property', 'business:contact_data:website', $item['canonical']);
+			//self::meta($html, $item, 'property', 'business:contact_data:website', $item['canonical']);
 		}
 
 		if (!empty($item['description'])) {
