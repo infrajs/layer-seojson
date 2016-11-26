@@ -149,7 +149,7 @@ class Seojson
 		if ($type == 'property') {
 			$r = preg_match('/<meta.*property=.{0,1}'.$name.'.{0,1}.*>/i', $html);
 			if (!$r) {
-				$html = str_ireplace('<head>', "<head>\n\t<meta property=\"".$name.'" content="'.$val.'"/>', $html);
+				$html = str_ireplace('</head>', "\n\t<meta property=\"".$name.'" content="'.$val.'"/>'."\n</head>", $html);
 			} else {
 				$html = preg_replace('/(<meta.*property=.{0,1}'.$name.'.{0,1})(.*>)/i', '<meta property="'.$name.'" content="'.$val.'" >', $html);
 			}
@@ -163,7 +163,7 @@ class Seojson
 		} elseif ($type == 'name') {
 			$r = preg_match('/<meta.*name=.{0,1}'.$name.'.{0,1}.*>/i', $html);
 			if (!$r) {
-				$html = str_ireplace('<head>', "<head>\n\t<meta name=\"".$name.'" content="'.$val.'"/>', $html);
+				$html = str_ireplace('</head>', "\n\t<meta name=\"".$name.'" content="'.$val.'"/>'."\n</head>", $html);
 			} else {
 				$html = preg_replace('/(<meta.*name=.{0,1}'.$name.'.{0,1})(.*>)/i', '<meta name="'.$name.'" content="'.$val.'" >', $html);
 			}
@@ -171,7 +171,7 @@ class Seojson
 			if (isset($item[$name])) {
 				$r = preg_match('/<link.*rel=.{0,1}'.$name.'.{0,1}.*>/i', $html);
 				if (!$r) {
-					$html = str_ireplace('<head>', "<head>\n\t<link rel=\"".$name.'" href="'.$val.'"/>', $html);
+					$html = str_ireplace('</head>', "\n\t<link rel=\"".$name.'" href="'.$val.'"/>'."\n</head>", $html);
 				} else {
 					$html = preg_replace('/(<link.*rel=.{0,1}'.$name.'.{0,1})(.*>)/i', '<link rel="'.$name.'" href="'.$val.'" >', $html);
 				}
@@ -179,7 +179,7 @@ class Seojson
 		} elseif ($type == 'itemprop') {
 			$r = preg_match('/<meta.*itemprop=.{0,1}'.$name.'.{0,1}.*>/i', $html);
 			if (!$r) {
-				$html = str_ireplace('<head>', "<head>\n\t<meta itemprop=\"".$name.'" content="'.$val.'"/>', $html);
+				$html = str_ireplace('</head>', "\n\t<meta itemprop=\"".$name.'" content="'.$val.'"/>'."\n</head>", $html);
 			} else {
 				$html = preg_replace('/(<meta.*itemprop=.{0,1}'.$name.'.{0,1})(.*>)/i', '<meta itemprop="'.$name.'" content="'.$val.'" >', $html);
 			}
