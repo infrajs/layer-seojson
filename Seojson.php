@@ -22,6 +22,7 @@ class Seojson
 		}
 
 		$html = View::html();
+		
 
 		if (!empty($item['image_src'])) {
 			self::meta($html, $item, 'link', 'image_src');
@@ -29,7 +30,10 @@ class Seojson
 			self::meta($html, $item, 'name', 'twitter:image', $item['image_src']);
 			//self::meta($html, $item, 'itemprop', 'image', $item['image_src']);
 		}
-
+		if (empty($item['canonical'])) {
+			$query = preg_replace('/^\//','',$_SERVER['REQUEST_URI']);
+			$item['canonical'] = View::getPath().$query;
+		}
 		if (!empty($item['canonical'])) {
 			self::meta($html, $item, 'link', 'canonical');
 			self::meta($html, $item, 'name', 'twitter:site', $item['canonical']);
@@ -57,19 +61,20 @@ class Seojson
 			self::meta($html, $item, 'property', 'og:site_name', $item['site_name']);
 		}
 
+		if (empty($item['properties']['og:type'])) self::meta($html, $item, 'property', 'og:type', 'website');
 		if (!empty($item['properties'])) {
 			foreach ($item['properties'] as $k => $v) {
-				self::meta($html, $item['properties'], 'property', $k);
+				self::meta($html, $item['properties'], 'property', $k, $v);
 			}
 		}
 		if (!empty($item['names'])) {
 			foreach ($item['names'] as $k => $v) {
-				self::meta($html, $item['names'], 'name', $k);
+				self::meta($html, $item['names'], 'name', $k, $v);
 			}
 		}
 		if (!empty($item['itemprops'])) {
 			foreach ($item['itemprops'] as $k => $v) {
-				self::meta($html, $item['itemprops'], 'itemprop', $k);
+				self::meta($html, $item['itemprops'], 'itemprop', $k, $v);
 			}
 		}
 
