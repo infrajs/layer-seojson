@@ -8,7 +8,7 @@ use infrajs\template\Template;
 
 class Seojson
 {
-	public function check(&$layer)
+	public static function check(&$layer)
 	{
 		if (!empty($layer['seojsontpl'])) {
 			$layer['seojson'] = Template::parse(array($layer['seojsontpl']), $layer);
@@ -80,7 +80,7 @@ class Seojson
 
 		View::html($html, true);
 	}
-	public function load($src)
+	public static function load($src)
 	{
 		$item = Load::loadJSON($src);
 		if (!$item) {
@@ -133,7 +133,7 @@ class Seojson
 
 		return $item;
 	}
-	public function value($value)
+	public static function value($value)
 	{
 		//load для <input value="...
 		$value = preg_replace('/\$/', '&#36;', $value);
@@ -141,7 +141,7 @@ class Seojson
 
 		return $value;
 	}
-	public function meta(&$html, $item, $type, $name, $val = null)
+	public static function meta(&$html, $item, $type, $name, $val = null)
 	{
 		if (is_null($val)&&isset($item[$name])) {
 			$val = $item[$name];
