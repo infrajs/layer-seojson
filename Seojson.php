@@ -146,9 +146,8 @@ class Seojson
 		if (is_null($val)&&isset($item[$name])) {
 			$val = $item[$name];
 		}
-		if (empty($val)) {
-			return;
-		}
+		if (empty($val)) return;
+
 		$val = self::value($val);
 
 		if ($type == 'property') {
