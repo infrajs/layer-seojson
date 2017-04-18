@@ -32,6 +32,7 @@ class Seojson
 		}
 		if (empty($item['canonical'])) {
 			$query = preg_replace('/^\//','',$_SERVER['REQUEST_URI']);
+			$query = preg_replace('/\?.*$/','',$query);
 			$item['canonical'] = View::getPath().$query;
 		}
 		if (!empty($item['canonical'])) {
