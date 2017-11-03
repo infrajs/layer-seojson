@@ -25,6 +25,7 @@ class Seojson
 		
 
 		if (!empty($item['image_src'])) {
+			if (empty($item['names']['twitter:card'])) self::meta($html, $item, 'name', 'twitter:card', 'summary_large_image');
 			self::meta($html, $item, 'link', 'image_src');
 			self::meta($html, $item, 'property', 'og:image', $item['image_src']);
 			self::meta($html, $item, 'name', 'twitter:image', $item['image_src']);
@@ -33,6 +34,7 @@ class Seojson
 		if (empty($item['canonical'])) {
 			$query = preg_replace('/^\//','',$_SERVER['REQUEST_URI']);
 			$query = preg_replace('/\?.*$/','',$query);
+			$query = preg_replace('/\/+$/','',$query);
 			$item['canonical'] = View::getPath().$query;
 		}
 		if (!empty($item['canonical'])) {
