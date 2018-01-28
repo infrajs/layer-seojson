@@ -96,10 +96,7 @@ class Seojson
 			}
 
 			foreach ($item['external'] as $esrc) {
-				if (!Path::theme($esrc)) {
-					echo '<pre>';
-					throw new \Exception('Not found seojson external '.$esrc);
-				}
+				if (!Path::theme($esrc)) continue;
 				$ext = self::load($esrc);
 				foreach ($ext as $k => $v) {
 					if (!isset($item[$k])) {
