@@ -85,9 +85,10 @@ class Seojson
 	}
 	public static function load($src)
 	{
+		if (!$src) return ['result'=>0];
 		$item = Load::loadJSON($src);
 		if (!$item) {
-			$item = array();
+			$item = array('result'=>0);
 		}
 
 		if (!empty($item['external'])) {
