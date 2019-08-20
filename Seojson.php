@@ -10,6 +10,14 @@ use infrajs\template\Template;
 class Seojson
 {
 	public static $conf = [];
+	public static function getSite() {
+		$conf = Config::get('layer-seojson');
+		if ($conf['site']) {
+			return $conf['site'];
+		} else {
+			return preg_replace("/\/$/", "", View::getPath());
+		}
+	}
 	public static function check(&$layer)
 	{
 		if (!empty($layer['seojsontpl'])) {
