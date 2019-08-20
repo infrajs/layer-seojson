@@ -3,11 +3,13 @@
 namespace infrajs\layer\seojson;
 use infrajs\load\Load;
 use infrajs\view\View;
+use infrajs\config\Config;
 use infrajs\path\Path;
 use infrajs\template\Template;
 
 class Seojson
 {
+	public static $conf = [];
 	public static function check(&$layer)
 	{
 		if (!empty($layer['seojsontpl'])) {
@@ -35,7 +37,15 @@ class Seojson
 			$query = preg_replace('/^\//','',$_SERVER['REQUEST_URI']);
 			$query = preg_replace('/\?.*$/','',$query);
 			$query = preg_replace('/\/+$/','',$query);
-			$item['canonical'] = View::getPath().$query;
+
+			$conf = Config::get('layer-seojson');
+			if($conf['site']) {
+				if ($query) $item['canonical'] = $conf['site'].'/'.$query;
+				else $item['canonical'] = $conf['site'];
+			} else {
+				$item['canonical'] = View::getPath().$query;
+			}
+			
 		}
 		if (!empty($item['canonical'])) {
 			self::meta($html, $item, 'link', 'canonical');

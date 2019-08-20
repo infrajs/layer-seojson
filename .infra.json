@@ -1,4 +1,5 @@
 {
 	"require":"infra.php",
-	"js":"infra.js"
+	"js":"infra.js",
+	"site":""
 }
