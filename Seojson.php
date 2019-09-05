@@ -23,13 +23,10 @@ class Seojson
 		if (!empty($layer['seojsontpl'])) {
 			$layer['seojson'] = Template::parse(array($layer['seojsontpl']), $layer);
 		}
-		if (empty($layer['seojson'])) {
-			return;
-		}
+		if (empty($layer['seojson'])) return;
+		
 		$item = self::load($layer['seojson']);
-		if (!$item) {
-			return;
-		}
+		if (!$item) return;
 
 		$html = View::html();
 		
