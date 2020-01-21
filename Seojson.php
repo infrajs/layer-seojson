@@ -38,7 +38,7 @@ class Seojson
 			self::meta($html, $item, 'name', 'twitter:image', $item['image_src']);
 			//self::meta($html, $item, 'itemprop', 'image', $item['image_src']);
 		}
-		if (empty($item['canonical'])) {
+		/*if (empty($item['canonical'])) {
 			$query = preg_replace('/^\//','',$_SERVER['REQUEST_URI']);
 			$query = preg_replace('/\?.*$/','',$query);
 			$query = preg_replace('/\/+$/','',$query);
@@ -51,13 +51,13 @@ class Seojson
 				$item['canonical'] = View::getPath().$query;
 			}
 			
-		}
-		if (!empty($item['canonical'])) {
+		}*/
+		/*if (!empty($item['canonical'])) {
 			self::meta($html, $item, 'link', 'canonical');
 			self::meta($html, $item, 'name', 'twitter:site', $item['canonical']);
 			self::meta($html, $item, 'property', 'og:url', $item['canonical']);
 			//self::meta($html, $item, 'property', 'business:contact_data:website', $item['canonical']);
-		}
+		}*/
 
 		if (!empty($item['description'])) {
 			self::meta($html, $item, 'name', 'description');
