@@ -52,12 +52,12 @@ class Seojson
 			}
 			
 		}*/
-		/*if (!empty($item['canonical'])) {
+		if (!empty($item['canonical'])) {
 			self::meta($html, $item, 'link', 'canonical');
 			self::meta($html, $item, 'name', 'twitter:site', $item['canonical']);
 			self::meta($html, $item, 'property', 'og:url', $item['canonical']);
 			//self::meta($html, $item, 'property', 'business:contact_data:website', $item['canonical']);
-		}*/
+		}
 
 		if (!empty($item['description'])) {
 			self::meta($html, $item, 'name', 'description');
