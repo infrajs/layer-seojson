@@ -1,3 +1,4 @@
+import { Event } from '/vendor/infrajs/event/Event.js'
 Event.handler('Controller.oncheck', function () {
 	if (Controller.store().counter === 1) return;
 	var layers = Controller.getWorkLayers();
