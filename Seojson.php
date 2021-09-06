@@ -101,7 +101,9 @@ class Seojson
 	public static function load($src)
 	{
 		if (!$src) return ['result'=>0];
+		$src = urldecode($src);
 		$item = Load::loadJSON($src);
+
 		if (!$item) {
 			$item = array('result'=>0);
 		}
